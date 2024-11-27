@@ -8,6 +8,7 @@ const swaggerUi = require('swagger-ui-express');
 dotenv.config();
 
 const app = express();
+
 app.use(express.json());
 
 const swaggerDocument = YAML.load('./swagger.yaml');
@@ -16,6 +17,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected successfully'))
   .catch(err => console.error('MongoDB connection error:', err));
+
 
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);

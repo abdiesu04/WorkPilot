@@ -29,7 +29,7 @@ paths:
           description: User created successfully
         '400':
           description: Invalid input
-  /login:
+  /auth/login:
     post:
       summary: User login
       description: Logs in a user and returns a token

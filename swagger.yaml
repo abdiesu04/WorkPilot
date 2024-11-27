@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: WorkPilot API
+  description: API documentation for WorkPilotx
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:5000'
+paths:
+  /auth/register:
+    post:
+      summary: Register a new user
+      description: Creates a new user in the system
+      operationId: registerUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: User created successfully
+        '400':
+          description: Invalid input
+  /login:
+    post:
+      summary: User login
+      description: Logs in a user and returns a token
+      operationId: loginUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Successful login with token
+        '401':
+          description: Invalid credentials
